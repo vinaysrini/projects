@@ -1,0 +1,89 @@
+<html>
+<head>
+    <style>
+            label {
+                display: block;
+                float: left;
+                width:180px;
+                font-size: 25px;
+            }
+            input {
+                width:100px;
+                font-size: 25px;
+            }
+            button {
+                font-size: 25px;
+            }
+            input.readonly {
+                border:none;
+            }
+    </style>
+    <script>
+            function maxHeartRate() {
+                var mhr = Math.round(211 - (0.64 * age()));
+                document.getElementById("mhr").value = mhr;
+                return mhr;
+            }
+
+            function restingHeartRate() {
+                return parseInt(document.getElementById("rhr").value, 10);
+            }
+
+            function age() {
+                var age = document.getElementById("age").value;
+                return parseInt(age,10);
+            }
+
+            function zone2(perc) {
+                return Math.round(perc * ( maxHeartRate() - restingHeartRate() ) + restingHeartRate());
+            }
+
+            function run() {
+                document.getElementById("zone2-l").value = zone2(0.6);
+                document.getElementById("zone2-h").value = zone2(0.7);
+            }
+    </script>
+</head>
+<body onload="run()">
+<h1>Zone 2 Calculator</h1>
+<p>
+    <label for="age">Age:</label>
+    <input type="number" id="age" name="age" min="1" max="100" value="43" onchange="run()">
+</p>
+<p>
+    <label for="age">Max HR:</label>
+    <input type="number" id="mhr" name="mhr" min="1" max="100" value="" readonly>
+</p>
+<p>
+    <label for="rhr">Resting HR:</label>
+    <input type="number" id="rhr" name="rhr" min="1" max="100" value="51" onchange="run()">
+</p>
+<p>
+    <label for="zone2-l">Zone 2 Lower:</label>
+    <input class="readonly" id="zone2-l" name="zone2" value="" readonly>
+</p>
+<p>
+    <label for="zone2-h">Zone 2 Upper:</label>
+    <input class="readonly" id="zone2-h" name="zone2" value="" readonly>
+</p>
+<p>
+    <button onclick="run()">Calculate</button>
+</p>
+<hr/>
+<pre>
+Max HR:
+  211 - (0.64 * age())
+
+Lower bound:
+  0.6 * (maxHR - restingHR) + restingHR
+
+Upper bound:
+  0.7 * (maxHR - restingHR) + restingHR
+
+</pre>
+<ul>
+    <li><a href="https://www.howardluksmd.com/zone-2-hr-training-live-longer-less-injury/">Zone Calculation</a></li>
+    <li><a href="https://theathleteblog.com/calculate-maximum-heart-rate/">Max Heart rate calculation</a></li>
+</ul>
+</body>
+</html>
