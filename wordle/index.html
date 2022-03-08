@@ -1,0 +1,92 @@
+<html>
+<head>
+    <title>Wordle</title>
+    <meta name="viewport" content="width=device-width"/>
+    <script
+            src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous"></script>
+    <style>
+        .grid {
+            width: 100%;
+            margin: 0 auto;
+        }
+        .grid-letter {
+            text-transform: capitalize;
+            font-size: 1.5em;
+            width: 50px;
+            height: 50px;
+            border: 1px solid gray;
+            margin-right: 2px;
+            text-align: center;
+            vertical-align: middle;
+        }
+        #wordle-keyboard {
+            margin: 0 auto;
+            width: 100%;
+        }
+        .keyboard-row {
+            margin-top: 10px;
+        }
+        .keyboard-letter {
+            text-transform: capitalize;
+            float: left;
+            width: 25px;
+            height: 30px;
+            border: 1px solid gray;
+            margin-right: 5px;
+            margin-top: 5px;
+            text-align: center;
+            vertical-align: middle;
+            padding-top: 5px;
+        }
+        .keyboard-letter-empty {
+            width: 10px;
+            border: none;
+        }
+        .keyboard-letter-large {
+            width: auto;
+        }
+        .keyboard-letter-exists {
+            background-color: yellow;
+        }
+        .keyboard-letter-matched {
+            background-color: green;
+        }
+        .keyboard-letter-wasted {
+            background-color: lightgray;
+        }
+        #message {
+            border: 1px solid gray;
+            padding: 10px;
+            margin: 10px auto;
+            width: 100%;
+            text-align: center;
+            font-size: 1.1em;
+        }
+        .noselect {
+              -webkit-touch-callout: none; /* iOS Safari */
+                -webkit-user-select: none; /* Safari */
+                 -khtml-user-select: none; /* Konqueror HTML */
+                   -moz-user-select: none; /* Firefox */
+                    -ms-user-select: none; /* Internet Explorer/Edge */
+                        user-select: none; /* Non-prefixed version, currently
+                                              supported by Chrome and Opera */
+        }
+    </style>
+    <script src="wordle.js"></script>
+    <script>
+    </script>
+</head>
+<body>
+    <div class="noselect" style="width:325px;margin:0 auto;">
+        <div id="message" style="display:none;"></div>
+        <div id="wordle-grid"></div>
+        <div id="wordle-keyboard"></div>
+        <div style="margin-top:20px;">
+            <a onclick="random_word();return false" href="#">Random Word</a><br/>
+            <a onclick="give_up();return false" href="#">Give Up</a>
+        </div>
+    </div>
+</body>
+</html>
